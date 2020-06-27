@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: Parameters
     var userSelected: Sign?
 
+    // MARK: Init
     override func viewDidLoad() {
         super.viewDidLoad()
         userSelected = nil
@@ -22,6 +24,7 @@ class ViewController: UIViewController {
         userSelected = nil
     }
     
+    // MARK: Actions
     @IBAction func rockPressed(_ sender: UIButton) {
         showResultModal(selection: .rock)
     }
@@ -34,6 +37,7 @@ class ViewController: UIViewController {
         showResultModal(selection: .scissors)
     }
     
+    // MARK: Navigation
     private func showResultModal(selection: Sign) {
         let modal = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Result Modal") as! ModalViewController
 
