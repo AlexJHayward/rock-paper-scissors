@@ -9,12 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var userSelected: Sign?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        userSelected = nil
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userSelected = nil
+    }
+    
+    @IBAction func rockPressed(_ sender: UIButton) {
+        showResultModal(selection: .rock)
+    }
+    
+    @IBAction func paperPressed(_ sender: UIButton) {
+        showResultModal(selection: .paper)
+    }
+    
+    @IBAction func scissorsPressed(_ sender: UIButton) {
+        showResultModal(selection: .scissors)
+    }
+    
+    private func showResultModal(selection: Sign) {
+        let modal = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Result Modal") as! ModalViewController
 
+        modal.userInput = selection
+        
+        self.present(modal, animated: true, completion: nil)
+    }
 }
 
